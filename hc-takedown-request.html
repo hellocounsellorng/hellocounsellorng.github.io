@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Takedown | Hello Counsellor NG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+  :root {
+    --forest: #1C3B2A;
+    --forest-light: #3F8063;
+    --cream: #FAF8F2;
+    --header-bg: #ecf4ef;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: 'Public Sans', sans-serif;
+    color: var(--forest);
+  }
+
+  header {
+    background: var(--header-bg);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .back-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--forest);
+    text-decoration: none;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  header img { height: 40px; }
+
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+  }
+
+  .intro {
+    line-height: 1.6;
+    color: #3d4d45;
+    margin-bottom: 8px;
+  }
+
+  .anon-chip {
+    display: inline-block;
+    background: var(--header-bg);
+    color: var(--forest-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin: 22px 0 8px;
+  }
+
+  .hint {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #7a8b81;
+  }
+
+  select, input[type="date"], input[type="url"], input[type="file"], textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #d6e2da;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.95rem;
+    background: #ffffff;
+    color: var(--forest);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .or-divider {
+    text-align: center;
+    color: #9aa89f;
+    font-size: 0.82rem;
+    margin: 14px 0;
+  }
+
+  button[type="submit"] {
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px;
+    background: var(--forest);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  #statusMsg {
+    margin-top: 16px;
+    font-size: 0.9rem;
+  }
+
+  #confirmation {
+    display: none;
+    background: var(--forest);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 26px;
+    text-align: center;
+  }
+
+  #confirmation h2 {
+    font-family: 'Fraunces', serif;
+    margin-top: 0;
+  }
+
+  #confirmation p {
+    line-height: 1.6;
+    opacity: 0.92;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-link">&larr; Back to Hello Counsellor NG</a>
+  <img src="logo.png" alt="Hello Counsellor NG logo">
+</header>
+
+<div class="wrap">
+
+  <div id="formSection">
+    <h1>Request a Takedown</h1>
+    <span class="anon-chip">🔒 100% anonymous</span>
+    <p class="intro">If you'd like a story you shared removed from wherever it was posted, let us know below. You don't need to give us your name or any contact details — just enough for us to find the post.</p>
+
+    <form id="takedownForm">
+
+      <label>Which platform was it posted on?</label>
+      <select id="platform" required>
+        <option value="" disabled selected>Select a platform</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="Instagram">Instagram</option>
+        <option value="TikTok">TikTok</option>
+        <option value="X">X</option>
+      </select>
+
+      <label>Roughly when was it posted? <span class="hint">(your best guess is fine)</span></label>
+      <input type="date" id="approxDate">
+
+      <label>Link to the post <span class="hint">(if you have one)</span></label>
+      <input type="url" id="postLink" placeholder="https://...">
+
+      <div class="or-divider">— or —</div>
+
+      <label>Upload a screenshot of the post</label>
+      <input type="file" id="screenshot" accept="image/*">
+
+      <label>Anything else that might help us find it? <span class="hint">(optional)</span></label>
+      <textarea id="note" placeholder="A few words from the story, or any other detail..."></textarea>
+
+      <button type="submit" id="submitBtn">Submit request</button>
+      <div id="statusMsg"></div>
+    </form>
+  </div>
+
+  <div id="confirmation">
+    <h2>Request received.</h2>
+    <p>We're sorry this post caused you distress — thank you for trusting us to make it right. Your request has been received and will be reviewed by our team. The post will be removed within 7 days.</p>
+    <p>You don't need to do anything else — we'll take care of the rest.</p>
+  </div>
+
+</div>
+
+<script>
+  const SUPABASE_URL = "https://aahszrjkrrqlcepcbrvq.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_MVWku_DfV6iX1HSY-BpEvw_x6Fj9NAg";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const form = document.getElementById('takedownForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusMsg = document.getElementById('statusMsg');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const platform = document.getElementById('platform').value;
+    const approxDate = document.getElementById('approxDate').value || null;
+    const postLink = document.getElementById('postLink').value || null;
+    const note = document.getElementById('note').value || null;
+    const fileInput = document.getElementById('screenshot');
+    const file = fileInput.files[0];
+
+    if (!platform) {
+      statusMsg.textContent = "Please select a platform.";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusMsg.textContent = "Submitting...";
+
+    let screenshotUrl = null;
+
+    try {
+      if (file) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${crypto.randomUUID()}.${fileExt}`;
+
+        const { error: uploadError } = await supabaseClient
+          .storage
+          .from('takedown-screenshots')
+          .upload(fileName, file);
+
+        if (uploadError) throw uploadError;
+
+        const { data: publicUrlData } = supabaseClient
+          .storage
+          .from('takedown-screenshots')
+          .getPublicUrl(fileName);
+
+        screenshotUrl = publicUrlData.publicUrl;
+      }
+
+      const { error: insertError } = await supabaseClient
+        .from('Takedown_requests')
+        .insert([{
+          platform: platform,
+          approx_date: approxDate,
+          post_link: postLink,
+          screenshot_url: screenshotUrl,
+          note: note
+        }]);
+
+      if (insertError) throw insertError;
+
+      document.getElementById('formSection').style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+
+    } catch (err) {
+      console.error(err);
+      statusMsg.textContent = "Something went wrong. Please try again.";
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
