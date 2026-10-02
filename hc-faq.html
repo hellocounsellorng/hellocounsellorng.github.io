@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Hello Counsellor NG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1C3B2A;
+    --forest-light: #3F8063;
+    --cream: #FAF8F2;
+    --header-bg: #ecf4ef;
+    --amber: #D98E3B;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: 'Public Sans', sans-serif;
+    color: var(--forest);
+  }
+
+  header {
+    background: var(--header-bg);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .back-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--forest);
+    text-decoration: none;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  header img { height: 40px; }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    margin-bottom: 10px;
+  }
+
+  .intro {
+    line-height: 1.6;
+    color: #3d4d45;
+    margin-bottom: 36px;
+  }
+
+  details {
+    background: #ffffff;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    padding: 4px 22px;
+    box-shadow: 0 2px 10px rgba(28, 59, 42, 0.06);
+  }
+
+  summary {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 18px 0;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 16px;
+    font-size: 1.4rem;
+    color: var(--forest-light);
+    font-family: 'Public Sans', sans-serif;
+  }
+
+  details[open] summary::after {
+    content: "–";
+  }
+
+  details p {
+    line-height: 1.65;
+    color: #3d4d45;
+    font-size: 0.95rem;
+    margin: 0 0 20px;
+  }
+
+  details p a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  .crisis-note {
+    background: var(--header-bg);
+    border-left: 3px solid var(--forest-light);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    color: #3d4d45;
+    margin-top: -6px;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.8rem;
+    color: #7a8b81;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-link">&larr; Back to Hello Counsellor NG</a>
+  <img src="logo.png" alt="Hello Counsellor NG logo">
+</header>
+
+<div class="wrap">
+  <h1>Frequently Asked Questions</h1>
+  <p class="intro">Everything you might want to know before sharing something with us.</p>
+
+  <details open>
+    <summary>Is this actually anonymous?</summary>
+    <p>Yes. We never ask for your name, and your submission isn't linked to any personal account. If you choose to leave contact info (like when requesting a counselor), that's entirely optional and only seen by our team.</p>
+  </details>
+
+  <details>
+    <summary>What happens after I submit my story?</summary>
+    <p>Our team reviews it, then shares it with the community exactly as you wrote it. We don't edit your words — the voice you told it in is yours, and it stays yours.</p>
+  </details>
+
+  <details>
+    <summary>Will my submission definitely be posted?</summary>
+    <p>Yes — we always publish. HC isn't a place where your voice gets filtered out; every submission becomes part of the community.</p>
+  </details>
+
+  <details>
+    <summary>Can people reply or comment on my story?</summary>
+    <p>Yes — once your story is posted on WhatsApp, Instagram, TikTok, or X, people can comment to offer advice, support, or their own perspective.</p>
+  </details>
+
+  <details>
+    <summary>Where do submissions get posted?</summary>
+    <p>Across our WhatsApp, Instagram, TikTok, and X communities. We spread submissions across all four so every platform has fresh stories, rather than posting every story everywhere.</p>
+  </details>
+
+  <details>
+    <summary>How do I talk to a real counselor instead of posting publicly?</summary>
+    <p>Visit our <a href="hc-counselors.html">Counselors page</a> — you can reach out directly via WhatsApp, call, or email, completely separate from the anonymous story process.</p>
+  </details>
+
+  <details>
+    <summary>Is there someone to talk to if I'm in crisis right now?</summary>
+    <p>Right now, you can reach one of our counselors directly via the <a href="hc-counselors.html">Counselors page</a> — WhatsApp, call, or email. We're building toward a dedicated toll-free crisis line so no one is ever held back by not having airtime. Until then, our counselors are real people who choose to be reachable, not a hotline queue.</p>
+    <div class="crisis-note">If you're in immediate danger or need urgent medical help, please contact your nearest hospital or emergency service as well.</div>
+  </details>
+
+  <details>
+    <summary>Do you store my information?</summary>
+    <p>We only store what you choose to submit. We don't collect names, emails, or identifying details unless you provide them yourself (for example, when requesting a counselor).</p>
+  </details>
+
+  <details>
+    <summary>Can I request my story be taken down after posting?</summary>
+    <p>Yes. Anonymity doesn't end once a story is posted — if you change your mind, you can <a href="hc-takedown-request.html">request a takedown</a> at any time, no questions asked.</p>
+  </details>
+
+</div>
+
+<footer>
+  Hello Counsellor NG &mdash; you are not alone.
+</footer>
+
+</body>
+</html>
